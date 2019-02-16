@@ -4,7 +4,11 @@ defmodule PbtTest do
 
   property "finds biggest element" do
     forall x <- non_empty(list(integer())) do
-      Pbt.biggest(x) == List.last(Enum.sort(x))
+      Pbt.biggest(x) == model_biggest(x)
     end
+  end
+
+  def model_biggest(list) do
+    List.last(Enum.sort(list))
   end
 end
