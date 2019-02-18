@@ -13,7 +13,7 @@ defmodule PbtTest do
   end
 
   property "picks the last number" do
-    forall {list, known_last} <- {list(number), number()} do
+    forall {list, known_last} <- {list(number()), number()} do
       known_list = list ++ [known_last]
       known_last == List.last(known_list)
     end
