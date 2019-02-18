@@ -49,4 +49,11 @@ defmodule PbtTest do
       Enum.all?(list, fn element -> element in sorted end)
     end
   end
+
+  property "symmetric encoding/decoding" do
+    forall data <- list({atom(), any()}) do
+      encoded = Pbt.encode(data)
+      is_binary(encoded) and data == Pbt.decode(encoded)
+    end
+  end
 end
